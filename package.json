@@ -5,6 +5,10 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": "10"
+  },
+  "main": "dist/index.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -18,7 +22,12 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start2": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
@@ -28,7 +37,9 @@
     "mongoose": "^5.9.28",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.5.4"
+    "rxjs": "^6.5.4",
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.0.0",
@@ -50,7 +61,8 @@
     "ts-loader": "^6.2.1",
     "ts-node": "^8.6.2",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "firebase-functions-test": "^0.1.6"
   },
   "jest": {
     "moduleFileExtensions": [
