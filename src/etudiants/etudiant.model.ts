@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 
 export const etudiantSchema = new mongoose.Schema({
+    id: String,
     nom: { type: String, required: true },
     prenom1: String,
     prenom2: String,
@@ -10,6 +11,7 @@ export const etudiantSchema = new mongoose.Schema({
     note: Number,
 })
 export interface Etudiant {
+    id?: string;
     nom: String;
     prenom1: String;
     prenom2: String;
